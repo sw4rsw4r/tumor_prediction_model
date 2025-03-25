@@ -6,7 +6,7 @@ This project aims ..
 
 
 ## File Structure
-
+```
 .
 ├── config.yaml
 ├── data
@@ -22,11 +22,12 @@ This project aims ..
 ├── results
 │   └── plots
 └── src
+```
+- **`data/`** : Contains raw and processed datasets.
+- **`models/`** : Stores trained models.
+- **`notebooks/`** : Jupyter notebooks for data exploration, training, and evaluation.
+- **`results/`** : Stores output results and visualization plots.
+- **`src/`** : Source code for data processing, model training, and evaluation.
+- **`config.yaml`** : Configuration file for the project.
+- **`env.yml`** : Conda environment configuration for the project, specifying the dependencies.
 
-data/ : Contains raw and processed datasets.
-models/ : Stores trained models.
-notebooks/ : Jupyter notebooks for data exploration, training, and evaluation.
-results/ : Stores output results and visualization plots.
-src/ : Source code for data processing, model training, and evaluation.
-config.yaml : Configuration file for the project.
-env.yml : Conda environment configuration for the project, specifying the dependencies.
