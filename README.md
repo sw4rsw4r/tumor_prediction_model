@@ -10,8 +10,8 @@ This project aims ..
 .
 ├── config.yaml
 ├── data
-│   ├── processed
-│   └── raw
+│   ├── downloaded
+│   └── processed
 ├── models
 ├── notebooks
 │   ├── 01_data_exploration.ipynb

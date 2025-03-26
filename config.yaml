@@ -4,8 +4,15 @@ random_seed: 1
 
 # Data settings
 data:
-  raw_data_path: "data/raw/"
-  processed_data_path: "data/processed/"
+  gene_fusions: "data/downloaded/Lung/20231023_092657_fusions_latest.csv"
+  copy_number_variation: "data/downloaded/Lung/20231023_092657_imputed_copynumber.csv"
+  drug_response: "data/downloaded/Lung/20231023_092657_imputed_drugresponse.csv"
+  metabolomics: "data/downloaded/Lung/20231023_092657_imputed_metabolomics.csv"
+  methylation: "data/downloaded/Lung/20231023_092657_imputed_methylation.csv"
+  proteomics: "data/downloaded/Lung/20231023_092657_imputed_proteomics.csv"
+  transcriptomics: "data/downloaded/Lung/20231023_092657_imputed_transcriptomics.csv"
+  crisprcas9: "data/downloaded/Lung/20231023_092657_imputed_crisprcas9.csv"
+
 
 # Model settings
 model:
