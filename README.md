@@ -31,3 +31,17 @@ This project aims ..
 - **`config.yaml`** : Configuration file for the project.
 - **`env.yml`** : Conda environment configuration for the project, specifying the dependencies.
 
+
+## Usage
+### 1. Activate the Conda environment
+```
+conda env create -f env.yml
+conda activate tumor_prediction_model
+```
+
+### 2. Launch jupyter notebook
+```
+jupyter notebook --ip=0.0.0.0 --port=8889 --NotebookApp.password=''
+```
+Then, open the relevant notebooks from the `notebooks/` directory.
+
