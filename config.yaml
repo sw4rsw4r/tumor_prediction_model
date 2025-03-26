@@ -1,0 +1,42 @@
+# General configuration
+project_name: "tumor_prediction_model"
+random_seed: 1
+
+# Data settings
+data:
+  raw_data_path: "data/raw/"
+  processed_data_path: "data/processed/"
+
+# Model settings
+model:
+  type: "Transformer"  # Transformer, VAE
+  hidden_size: 256
+  num_layers: 4
+  dropout: 0.1
+  learning_rate: 0.001
+  batch_size: 32
+  epochs: 50
+  loss_function: "MSE"  # MSE, MAE
+  optimizer: "Adam"
+
+# Training settings
+training:
+  validation_split: 0.2
+  early_stopping: True
+  patience: 5
+
+# Evaluation settings
+evaluation:
+  metrics: ["R2", "MSE", "MAE"]
+  save_results: True
+  output_dir: "results/"
+
+# Logging settings
+logging:
+  level: "INFO"
+  log_file: "logs/training.log"
+
+# Hardware settings
+hardware:
+  use_gpu: False
+  num_workers: 8

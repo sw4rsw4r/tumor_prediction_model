@@ -28,7 +28,7 @@ This project aims ..
 - **`notebooks/`** : Jupyter notebooks for data exploration, training, and evaluation.
 - **`results/`** : Stores output results and visualization plots.
 - **`src/`** : Source code for data processing, model training, and evaluation.
-- **`config.yaml`** : Configuration file for the project.
+- **`config.yaml`** : Configuration file for the project. This includes dataset paths, data preprocessing parameters, and model configurations. This insures consistency across different scripts and notebooks.
 - **`env.yml`** : Conda environment configuration for the project, specifying the dependencies.
 
 
@@ -44,4 +44,3 @@ conda activate tumor_prediction_model
 jupyter notebook --ip=0.0.0.0 --port=8889 --NotebookApp.password=''
 ```
 Then, open the relevant notebooks from the `notebooks/` directory.
-
