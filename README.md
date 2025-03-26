@@ -18,7 +18,7 @@ This project aims ..
 │   ├── 02_model_training.ipynb
 │   └── 03_evaluation.ipynb
 ├── README.md
-├── env.yml
+├── env.yaml
 ├── results
 │   └── plots
 └── src
@@ -29,13 +29,13 @@ This project aims ..
 - **`results/`** : Stores output results and visualization plots.
 - **`src/`** : Source code for data processing, model training, and evaluation.
 - **`config.yaml`** : Configuration file for the project. This includes dataset paths, data preprocessing parameters, and model configurations. This insures consistency across different scripts and notebooks.
-- **`env.yml`** : Conda environment configuration for the project, specifying the dependencies.
+- **`env.yaml`** : Conda environment configuration for the project, specifying the dependencies.
 
 
 ## Usage
 ### 1. Activate the Conda environment
 ```
-conda env create -f env.yml
+conda env create -f env.yaml
 conda activate tumor_prediction_model
 ```
 
