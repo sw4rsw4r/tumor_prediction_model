@@ -1,49 +1,63 @@
 # General configuration
 project_name: "tumor_prediction_model"
-random_seed: 1
 
 # Data settings
 data:
-  gene_fusions: "data/downloaded/Lung/20231023_092657_fusions_latest.csv"
-  copy_number_variation: "data/downloaded/Lung/20231023_092657_imputed_copynumber.csv"
-  drug_response: "data/downloaded/Lung/20231023_092657_imputed_drugresponse.csv"
-  metabolomics: "data/downloaded/Lung/20231023_092657_imputed_metabolomics.csv"
-  methylation: "data/downloaded/Lung/20231023_092657_imputed_methylation.csv"
-  proteomics: "data/downloaded/Lung/20231023_092657_imputed_proteomics.csv"
-  transcriptomics: "data/downloaded/Lung/20231023_092657_imputed_transcriptomics.csv"
-  crisprcas9: "data/downloaded/Lung/20231023_092657_imputed_crisprcas9.csv"
+  gene_fusions: "data/Lung/20231023_092657_fusions_latest.csv"
+  copy_number_variation: "data/Lung/20231023_092657_imputed_copynumber.csv"
+  drug_response: "data/Lung/20231023_092657_imputed_drugresponse.csv"
+  metabolomics: "data/Lung/20231023_092657_imputed_metabolomics.csv"
+  methylation: "data/Lung/20231023_092657_imputed_methylation.csv"
+  proteomics: "data/Lung/20231023_092657_imputed_proteomics.csv"
+  transcriptomics: "data/Lung/20231023_092657_imputed_transcriptomics.csv"
+  crisprcas9: "data/Lung/20231023_092657_imputed_crisprcas9.csv"
 
+preprocessing:
+  top_features: 50
+  augmentation_factor: 3
 
-# Model settings
-model:
-  type: "Transformer"  # Transformer, VAE
-  hidden_size: 256
-  num_layers: 4
-  dropout: 0.1
-  learning_rate: 0.001
-  batch_size: 32
-  epochs: 50
-  loss_function: "MSE"  # MSE, MAE
-  optimizer: "Adam"
+random_seed: 1
 
-# Training settings
-training:
-  validation_split: 0.2
-  early_stopping: True
-  patience: 5
+outcome_name: "proteomics"
 
-# Evaluation settings
-evaluation:
-  metrics: ["R2", "MSE", "MAE"]
-  save_results: True
-  output_dir: "results/"
+models:
+  linear_regression:
+    names: ['drug_response', 'crisprcas9', 'metabolomics', 'transcriptomics', 'copy_number_variation', 'methylation']
 
-# Logging settings
-logging:
-  level: "INFO"
-  log_file: "logs/training.log"
+  self_attention:
+    names: ['drug_response', 'crisprcas9', 'metabolomics', 'transcriptomics', 'copy_number_variation', 'methylation']
+    d_model: 8
+    num_heads: 4
+    key_dim: 8
+    training:
+      batch_size: 2
+      epochs: 150
+      learning_rate: 0.001
+      patience: 10
+      validation_split: 0.2
 
-# Hardware settings
-hardware:
-  use_gpu: False
-  num_workers: 8
+  cross_attention:
+    self_attention_names: ['drug_response', 'crisprcas9', 'metabolomics']
+    cross_attention_names: ['transcriptomics', 'copy_number_variation', 'methylation']
+    d_model: 8
+    num_heads: 4
+    key_dim: 8
+    training:
+      batch_size: 2
+      epochs: 200
+      learning_rate: 0.001
+      patience: 10
+      validation_split: 0.2
+
+  rnn:
+    names: ['drug_response', 'crisprcas9', 'metabolomics', 'transcriptomics', 'copy_number_variation', 'methylation']
+    lstm_units: 64
+    training:
+      batch_size: 32
+      epochs: 300
+      learning_rate: 0.001
+      patience: 10
+      validation_split: 0.2
+
+cross_validation:
+  n_folds: 2
